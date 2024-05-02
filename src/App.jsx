@@ -1,11 +1,11 @@
-import { DatePicker } from "antd"
+
+import { Outlet } from "react-router-dom"
 
 function App() {
 
   return (
     <>
-    <DatePicker  />
-    <p className="text-4xl text-center">date</p>
+    <Outlet/>
     </>
   )
 }
