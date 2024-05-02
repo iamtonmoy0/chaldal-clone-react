@@ -9,10 +9,11 @@ import {
   VideoCameraOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
-const { Header, Sider } = Layout;
+const { Content, Sider } = Layout;
+
 const items = [
   UserOutlined,
   VideoCameraOutlined,
@@ -27,16 +28,13 @@ const items = [
   icon: React.createElement(icon),
   label: `nav ${index + 1}`,
 }));
-
-const headerStyle = {
+const contentStyle = {
   textAlign: "center",
-  color: "#fff",
-  height: 64,
-  paddingInline: 48,
-  lineHeight: "64px",
-  backgroundColor: "#4096ff",
+  minHeight: 120,
+  lineHeight: "120px",
+  color: "black",
+  backgroundColor: "#fff",
 };
-
 const layoutStyle = {
   overflow: "hidden",
   width: "100%",
@@ -44,12 +42,22 @@ const layoutStyle = {
   minHeight: "100vh",
 };
 export default function Dashboard() {
+  const [collapsed, setCollapsed] = useState(false);
+  const outletStyle = {
+    marginLeft: collapsed ? 80 : 200,
+    transition: "margin-left 0.2s",
+    minHeight: "100vh",
+    width: collapsed ? "calc(100% - 80px)" : "calc(100% - 200px)",
+  };
   return (
     <div className="h-full">
       <Layout style={layoutStyle}>
-        <Navbar />
+        <Navbar open={collapsed} setOpen={setCollapsed} />
         <Layout>
           <Sider
+            collapsed={collapsed}
+            breakpoint="lg"
+            collapsedWidth="0"
             style={{
               overflow: "auto",
               height: "calc(100vh - 64px)",
@@ -57,18 +65,16 @@ export default function Dashboard() {
               left: 0,
               top: 64,
               bottom: 0,
+              background: "#FFFFFF",
             }}
           >
             <div className="demo-logo-vertical" />
-            <Menu
-              theme="dark"
-              mode="inline"
-              defaultSelectedKeys={["4"]}
-              items={items}
-            />
+            <Menu mode="inline" defaultSelectedKeys={["4"]} items={items} />
           </Sider>
           {/* dynamic render space */}
-          <Outlet />
+          <Content style={contentStyle}>
+            <Outlet />
+          </Content>
         </Layout>
       </Layout>
     </div>

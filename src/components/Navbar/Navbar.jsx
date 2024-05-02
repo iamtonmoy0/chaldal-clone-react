@@ -1,9 +1,14 @@
-export default function Navbar() {
+import { MenuFoldOutlined } from "@ant-design/icons";
+export default function Navbar({ open, setOpen }) {
   return (
     <header className="bg-[#FDD670]">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-evenly">
+        <div className="flex h-16 items-center justify-between">
           <div className="flex-1 md:flex md:items-center md:gap-12">
+            <MenuFoldOutlined
+              onClick={() => setOpen(!open)}
+              style={{ fontSize: "20px" }}
+            />
             <a className="block text-teal-600" href="#">
               <span className="sr-only">Home</span>
               <svg
@@ -20,17 +25,12 @@ export default function Navbar() {
             </a>
           </div>
           {/* search */}
-          <div className="relative">
-            <label htmlFor="Search" className="sr-only">
-              {" "}
-              Search{" "}
-            </label>
-
+          <div className="relative mr-16 bg-gray-100 w-[450px] ">
             <input
               type="text"
               id="Search"
               placeholder="Search for..."
-              className="w-full rounded-md border-gray-200 py-2.5 pe-10 shadow-sm sm:text-sm"
+              className="w-full rounded-md border-gray-200 py-2.5 pe-10 shadow-sm sm:text-sm pl-4"
             />
 
             <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
@@ -72,13 +72,10 @@ export default function Navbar() {
                 </li>
 
                 <li>
-                  <a
-                    className="text-gray-500 transition hover:text-gray-500/75"
-                    href="#"
-                  >
+                  <button className="text-gray-500 transition hover:text-gray-500/75">
                     {" "}
                     Projects{" "}
-                  </a>
+                  </button>
                 </li>
 
                 <li>
@@ -101,15 +98,6 @@ export default function Navbar() {
                 >
                   Login
                 </a>
-
-                <div className="hidden sm:flex">
-                  <a
-                    className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600"
-                    href="#"
-                  >
-                    Register
-                  </a>
-                </div>
               </div>
 
               <div className="block md:hidden">
