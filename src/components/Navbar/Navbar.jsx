@@ -1,8 +1,9 @@
 import { MenuFoldOutlined } from "@ant-design/icons";
+
 export default function Navbar({ open, setOpen }) {
   return (
     <header className="bg-[#FDD670]">
-      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-screen-xl ">
         <div className="flex h-16 items-center justify-between">
           <div className="flex-1 md:flex md:items-center md:gap-12">
             <MenuFoldOutlined
@@ -10,7 +11,6 @@ export default function Navbar({ open, setOpen }) {
               style={{ fontSize: "20px" }}
             />
             <a className="block text-teal-600" href="#">
-              <span className="sr-only">Home</span>
               <img
                 src="https://chaldn.com/asset/Egg.ChaldalWeb.Fabric/Egg.ChaldalWeb1/1.0.0-Deploy-Release-471/Default/components/header/Header/images/logo-small.png?q=low&webp=21&alpha=1"
                 alt="https://chaldn.com/asset/Egg.ChaldalWeb.Fabric/Egg.ChaldalWeb1/1.0.0-Deploy-Release-471/Default/components/header/Header/images/logo-small.png?q=low&webp=21&alpha=1"
