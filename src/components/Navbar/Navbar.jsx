@@ -19,7 +19,7 @@ export default function Navbar({ open, setOpen }) {
             </a>
           </div>
           {/* search */}
-          <div className="relative mr-16 bg-gray-100 w-[450px] ">
+          <div className="relative mr-16 bg-gray-100 w-[450px] md:disabled">
             <input
               type="text"
               id="Search"
